@@ -3,3 +3,12 @@
 ################################################################################
 
 /ExamFinal/ExamFinal.Business/obj/Debug
+/ExamFinal/ExamFinal.Mobile.UI/ExamFinal.Mobile.UI/bin/Debug/netstandard2.0
+/ExamFinal/ExamFinal.Mobile.UI/ExamFinal.Mobile.UI/obj
+/ExamFinal/ExamFinal.Mobile.UI/ExamFinal.Mobile.UI.Android/obj
+/ExamFinal/ExamFinal.WebApp.API/bin
+/ExamFinal/ExamFinal.WebApp.API/obj/Debug
+/ExamFinal/ExamFinal.WepApp.UI/bin
+/ExamFinal/ExamFinal.WepApp.UI/obj/Debug
+/ExamFinal/packages
+/ExamFinal/.vs/ExamFinal
