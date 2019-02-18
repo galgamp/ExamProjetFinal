@@ -12,3 +12,11 @@
 /ExamFinal/ExamFinal.WepApp.UI/obj/Debug
 /ExamFinal/packages
 /ExamFinal/.vs/ExamFinal
+/ExamFinal/ExamFinal.Business/bin/Debug
+/ExamFinal/ExamFinal.BusinessTests/bin/Debug
+/ExamFinal/ExamFinal.BusinessTests/obj/Debug
+/ExamFinal/ExamFinal.Context/bin/Debug
+/ExamFinal/ExamFinal.Context/obj/Debug
+/ExamFinal/ExamFinal.Mobile.UI/ExamFinal.Mobile.UI.Android/bin/Debug
+/ExamFinal/ExamFinal.Repository/bin/Debug
+/ExamFinal/ExamFinal.Repository/obj/Debug

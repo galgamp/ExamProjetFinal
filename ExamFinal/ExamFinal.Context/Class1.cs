@@ -4,18 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamFinal.Business
+namespace ExamFinal.Context
 {
     public class Class1
     {
-        public Class1()
-        {
-
-        }
-
-        public void rien()
-        {
-
-        }
     }
 }
