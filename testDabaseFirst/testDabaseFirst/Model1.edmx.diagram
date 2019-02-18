@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3577a328bdb5478b8cd25cff1329b8ff" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamTimDbTestModel.actualite" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.categorie_produit" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.historique_credit" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.mise" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.produit" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.question" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.reponse" Width="1.5" PointX="7.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.statut_mise" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.statut_produit" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.type_utilisateur" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamTimDbTestModel.utilisateur" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_produit_dbo_categorie_produit_id_categorie_produit" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_mise_dbo_produit_id_produit" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_mise_dbo_statut_mise_id_statut_mise" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_mise_dbo_utilisateur_id_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_produit_dbo_statut_produit_id_statut_produit" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_question_dbo_utilisateur_id_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_reponse_dbo_question_id_question" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_reponse_dbo_utilisateur_id_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamTimDbTestModel.FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,19 @@
+﻿@model ExamFinal.Models.EventModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    @foreach (var item in Model.Events)
+    {
+        <hr />
+        <div id="@item.Id">
+            <div>@item.Date</div>
+            <div>@item.Address</div>
+        </div>
+    }
+    <hr />
+    <hr />
+    <hr />
+
+
+</div>

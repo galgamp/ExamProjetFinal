@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeamTimDbTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actualite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titre" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="urlImage" Type="nvarchar(max)" />
+          <Property Name="dateDebut" Type="datetime" Nullable="false" />
+          <Property Name="dateFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="categorie_produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+          <Property Name="url_image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="historique_credit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="id_utilisateur" Type="int" />
+        </EntityType>
+        <EntityType Name="mise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="montant" Type="float" Nullable="false" />
+          <Property Name="cout" Type="float" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="id_produit" Type="int" />
+          <Property Name="id_statut_mise" Type="int" />
+          <Property Name="id_utilisateur" Type="int" />
+        </EntityType>
+        <EntityType Name="produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+          <Property Name="reference" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="prix_base" Type="float" Nullable="false" />
+          <Property Name="date_debut_vente" Type="datetime" Nullable="false" />
+          <Property Name="date_fin_vente" Type="datetime" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="marge" Type="float" Nullable="false" />
+          <Property Name="commentaire" Type="nvarchar(max)" />
+          <Property Name="est_dans_panier" Type="bit" Nullable="false" />
+          <Property Name="id_categorie_produit" Type="int" />
+          <Property Name="id_statut_produit" Type="int" />
+          <Property Name="id_utilisateur_gagnant" Type="int" />
+          <Property Name="id_utilisateur_vente" Type="int" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sujet" Type="nvarchar(max)" />
+          <Property Name="contenu" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="id_utilisateur" Type="int" />
+        </EntityType>
+        <EntityType Name="reponse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contenu" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="id_question" Type="int" />
+          <Property Name="id_utilisateur" Type="int" />
+        </EntityType>
+        <EntityType Name="statut_mise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="statut_produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="type_utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date_naissance" Type="datetime" Nullable="false" />
+          <Property Name="adresse" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="code_postal" Type="int" Nullable="false" />
+          <Property Name="ville" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pays" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tel" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="credit" Type="float" Nullable="false" />
+          <Property Name="motDePasse" Type="nvarchar(max)" />
+          <Property Name="id_type_utilisateur" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="historique_credit" Type="Self.historique_credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historique_credit">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_produit_id_produit">
+          <End Role="produit" Type="Self.produit" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_statut_mise_id_statut_mise">
+          <End Role="statut_mise" Type="Self.statut_mise" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statut_mise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_statut_mise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_categorie_produit_id_categorie_produit">
+          <End Role="categorie_produit" Type="Self.categorie_produit" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie_produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_categorie_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_statut_produit_id_statut_produit">
+          <End Role="statut_produit" Type="Self.statut_produit" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statut_produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_statut_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_utilisateur_gagnant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_utilisateur_vente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_question_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_reponse_dbo_question_id_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1" />
+          <End Role="reponse" Type="Self.reponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_reponse_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="reponse" Type="Self.reponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur">
+          <End Role="type_utilisateur" Type="Self.type_utilisateur" Multiplicity="0..1" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="id_type_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamTimDbTestModelStoreContainer">
+          <EntitySet Name="actualite" EntityType="Self.actualite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categorie_produit" EntityType="Self.categorie_produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historique_credit" EntityType="Self.historique_credit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mise" EntityType="Self.mise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="produit" EntityType="Self.produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reponse" EntityType="Self.reponse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statut_mise" EntityType="Self.statut_mise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="statut_produit" EntityType="Self.statut_produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_utilisateur" EntityType="Self.type_utilisateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="historique_credit" EntitySet="historique_credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_produit_id_produit" Association="Self.FK_dbo_mise_dbo_produit_id_produit">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_statut_mise_id_statut_mise" Association="Self.FK_dbo_mise_dbo_statut_mise_id_statut_mise">
+            <End Role="statut_mise" EntitySet="statut_mise" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_mise_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_categorie_produit_id_categorie_produit" Association="Self.FK_dbo_produit_dbo_categorie_produit_id_categorie_produit">
+            <End Role="categorie_produit" EntitySet="categorie_produit" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_statut_produit_id_statut_produit" Association="Self.FK_dbo_produit_dbo_statut_produit_id_statut_produit">
+            <End Role="statut_produit" EntitySet="statut_produit" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant" Association="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente" Association="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_question_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_question_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_reponse_dbo_question_id_question" Association="Self.FK_dbo_reponse_dbo_question_id_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="reponse" EntitySet="reponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_reponse_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_reponse_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="reponse" EntitySet="reponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur" Association="Self.FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur">
+            <End Role="type_utilisateur" EntitySet="type_utilisateur" />
+            <End Role="utilisateur" EntitySet="utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeamTimDbTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actualite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="urlImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateDebut" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateFin" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="categorie_produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_dbo_produit_dbo_categorie_produit_id_categorie_produit" FromRole="categorie_produit" ToRole="produit" />
+        </EntityType>
+        <EntityType Name="historique_credit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_utilisateur" Type="Int32" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur" FromRole="historique_credit" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="mise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="montant" Type="Double" Nullable="false" />
+          <Property Name="cout" Type="Double" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_produit" Type="Int32" />
+          <Property Name="id_statut_mise" Type="Int32" />
+          <Property Name="id_utilisateur" Type="Int32" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_dbo_mise_dbo_produit_id_produit" FromRole="mise" ToRole="produit" />
+          <NavigationProperty Name="statut_mise" Relationship="Self.FK_dbo_mise_dbo_statut_mise_id_statut_mise" FromRole="mise" ToRole="statut_mise" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_mise_dbo_utilisateur_id_utilisateur" FromRole="mise" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="prix_base" Type="Double" Nullable="false" />
+          <Property Name="date_debut_vente" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_fin_vente" Type="DateTime" Precision="3" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="marge" Type="Double" Nullable="false" />
+          <Property Name="commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="est_dans_panier" Type="Boolean" Nullable="false" />
+          <Property Name="id_categorie_produit" Type="Int32" />
+          <Property Name="id_statut_produit" Type="Int32" />
+          <Property Name="id_utilisateur_gagnant" Type="Int32" />
+          <Property Name="id_utilisateur_vente" Type="Int32" />
+          <NavigationProperty Name="categorie_produit" Relationship="Self.FK_dbo_produit_dbo_categorie_produit_id_categorie_produit" FromRole="produit" ToRole="categorie_produit" />
+          <NavigationProperty Name="mise" Relationship="Self.FK_dbo_mise_dbo_produit_id_produit" FromRole="produit" ToRole="mise" />
+          <NavigationProperty Name="statut_produit" Relationship="Self.FK_dbo_produit_dbo_statut_produit_id_statut_produit" FromRole="produit" ToRole="statut_produit" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant" FromRole="produit" ToRole="utilisateur" />
+          <NavigationProperty Name="utilisateur1" Relationship="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente" FromRole="produit" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sujet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_utilisateur" Type="Int32" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_question_dbo_utilisateur_id_utilisateur" FromRole="question" ToRole="utilisateur" />
+          <NavigationProperty Name="reponse" Relationship="Self.FK_dbo_reponse_dbo_question_id_question" FromRole="question" ToRole="reponse" />
+        </EntityType>
+        <EntityType Name="reponse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contenu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_question" Type="Int32" />
+          <Property Name="id_utilisateur" Type="Int32" />
+          <NavigationProperty Name="question" Relationship="Self.FK_dbo_reponse_dbo_question_id_question" FromRole="reponse" ToRole="question" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_reponse_dbo_utilisateur_id_utilisateur" FromRole="reponse" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="statut_mise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mise" Relationship="Self.FK_dbo_mise_dbo_statut_mise_id_statut_mise" FromRole="statut_mise" ToRole="mise" />
+        </EntityType>
+        <EntityType Name="statut_produit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_dbo_produit_dbo_statut_produit_id_statut_produit" FromRole="statut_produit" ToRole="produit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="type_utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur" FromRole="type_utilisateur" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_naissance" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="code_postal" Type="Int32" Nullable="false" />
+          <Property Name="ville" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pays" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="credit" Type="Double" Nullable="false" />
+          <Property Name="motDePasse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_type_utilisateur" Type="Int32" />
+          <NavigationProperty Name="historique_credit" Relationship="Self.FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur" FromRole="utilisateur" ToRole="historique_credit" />
+          <NavigationProperty Name="mise" Relationship="Self.FK_dbo_mise_dbo_utilisateur_id_utilisateur" FromRole="utilisateur" ToRole="mise" />
+          <NavigationProperty Name="produit" Relationship="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant" FromRole="utilisateur" ToRole="produit" />
+          <NavigationProperty Name="produit1" Relationship="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente" FromRole="utilisateur" ToRole="produit" />
+          <NavigationProperty Name="question" Relationship="Self.FK_dbo_question_dbo_utilisateur_id_utilisateur" FromRole="utilisateur" ToRole="question" />
+          <NavigationProperty Name="reponse" Relationship="Self.FK_dbo_reponse_dbo_utilisateur_id_utilisateur" FromRole="utilisateur" ToRole="reponse" />
+          <NavigationProperty Name="type_utilisateur" Relationship="Self.FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur" FromRole="utilisateur" ToRole="type_utilisateur" />
+        </EntityType>
+        <Association Name="FK_dbo_produit_dbo_categorie_produit_id_categorie_produit">
+          <End Role="categorie_produit" Type="Self.categorie_produit" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorie_produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_categorie_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="historique_credit" Type="Self.historique_credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="historique_credit">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_produit_id_produit">
+          <End Role="produit" Type="Self.produit" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_statut_mise_id_statut_mise">
+          <End Role="statut_mise" Type="Self.statut_mise" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statut_mise">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_statut_mise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_mise_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="mise" Type="Self.mise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mise">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_statut_produit_id_statut_produit">
+          <End Role="statut_produit" Type="Self.statut_produit" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statut_produit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_statut_produit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_utilisateur_gagnant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="produit" Type="Self.produit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produit">
+              <PropertyRef Name="id_utilisateur_vente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_question_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_reponse_dbo_question_id_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1" />
+          <End Role="reponse" Type="Self.reponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse">
+              <PropertyRef Name="id_question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_reponse_dbo_utilisateur_id_utilisateur">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="reponse" Type="Self.reponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse">
+              <PropertyRef Name="id_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur">
+          <End Role="type_utilisateur" Type="Self.type_utilisateur" Multiplicity="0..1" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="utilisateur">
+              <PropertyRef Name="id_type_utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeamTimDbTestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actualite" EntityType="Self.actualite" />
+          <EntitySet Name="categorie_produit" EntityType="Self.categorie_produit" />
+          <EntitySet Name="historique_credit" EntityType="Self.historique_credit" />
+          <EntitySet Name="mise" EntityType="Self.mise" />
+          <EntitySet Name="produit" EntityType="Self.produit" />
+          <EntitySet Name="question" EntityType="Self.question" />
+          <EntitySet Name="reponse" EntityType="Self.reponse" />
+          <EntitySet Name="statut_mise" EntityType="Self.statut_mise" />
+          <EntitySet Name="statut_produit" EntityType="Self.statut_produit" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="type_utilisateur" EntityType="Self.type_utilisateur" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" />
+          <AssociationSet Name="FK_dbo_produit_dbo_categorie_produit_id_categorie_produit" Association="Self.FK_dbo_produit_dbo_categorie_produit_id_categorie_produit">
+            <End Role="categorie_produit" EntitySet="categorie_produit" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_historique_credit_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="historique_credit" EntitySet="historique_credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_produit_id_produit" Association="Self.FK_dbo_mise_dbo_produit_id_produit">
+            <End Role="produit" EntitySet="produit" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_statut_mise_id_statut_mise" Association="Self.FK_dbo_mise_dbo_statut_mise_id_statut_mise">
+            <End Role="statut_mise" EntitySet="statut_mise" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_mise_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_mise_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="mise" EntitySet="mise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_statut_produit_id_statut_produit" Association="Self.FK_dbo_produit_dbo_statut_produit_id_statut_produit">
+            <End Role="statut_produit" EntitySet="statut_produit" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant" Association="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_gagnant">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente" Association="Self.FK_dbo_produit_dbo_utilisateur_id_utilisateur_vente">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="produit" EntitySet="produit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_question_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_question_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_reponse_dbo_question_id_question" Association="Self.FK_dbo_reponse_dbo_question_id_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="reponse" EntitySet="reponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_reponse_dbo_utilisateur_id_utilisateur" Association="Self.FK_dbo_reponse_dbo_utilisateur_id_utilisateur">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="reponse" EntitySet="reponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur" Association="Self.FK_dbo_utilisateur_dbo_type_utilisateur_id_type_utilisateur">
+            <End Role="type_utilisateur" EntitySet="type_utilisateur" />
+            <End Role="utilisateur" EntitySet="utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeamTimDbTestModelStoreContainer" CdmEntityContainer="TeamTimDbTestEntities">
+          <EntitySetMapping Name="actualite">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.actualite">
+              <MappingFragment StoreEntitySet="actualite">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="urlImage" ColumnName="urlImage" />
+                <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+                <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorie_produit">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.categorie_produit">
+              <MappingFragment StoreEntitySet="categorie_produit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="url_image" ColumnName="url_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historique_credit">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.historique_credit">
+              <MappingFragment StoreEntitySet="historique_credit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mise">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.mise">
+              <MappingFragment StoreEntitySet="mise">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="cout" ColumnName="cout" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+                <ScalarProperty Name="id_statut_mise" ColumnName="id_statut_mise" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produit">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.produit">
+              <MappingFragment StoreEntitySet="produit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="prix_base" ColumnName="prix_base" />
+                <ScalarProperty Name="date_debut_vente" ColumnName="date_debut_vente" />
+                <ScalarProperty Name="date_fin_vente" ColumnName="date_fin_vente" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="marge" ColumnName="marge" />
+                <ScalarProperty Name="commentaire" ColumnName="commentaire" />
+                <ScalarProperty Name="est_dans_panier" ColumnName="est_dans_panier" />
+                <ScalarProperty Name="id_categorie_produit" ColumnName="id_categorie_produit" />
+                <ScalarProperty Name="id_statut_produit" ColumnName="id_statut_produit" />
+                <ScalarProperty Name="id_utilisateur_gagnant" ColumnName="id_utilisateur_gagnant" />
+                <ScalarProperty Name="id_utilisateur_vente" ColumnName="id_utilisateur_vente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sujet" ColumnName="sujet" />
+                <ScalarProperty Name="contenu" ColumnName="contenu" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reponse">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.reponse">
+              <MappingFragment StoreEntitySet="reponse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contenu" ColumnName="contenu" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_question" ColumnName="id_question" />
+                <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statut_mise">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.statut_mise">
+              <MappingFragment StoreEntitySet="statut_mise">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="statut_produit">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.statut_produit">
+              <MappingFragment StoreEntitySet="statut_produit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_utilisateur">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.type_utilisateur">
+              <MappingFragment StoreEntitySet="type_utilisateur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisateur">
+            <EntityTypeMapping TypeName="TeamTimDbTestModel.utilisateur">
+              <MappingFragment StoreEntitySet="utilisateur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date_naissance" ColumnName="date_naissance" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />
+                <ScalarProperty Name="id_type_utilisateur" ColumnName="id_type_utilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
